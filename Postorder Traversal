@@ -1,0 +1,19 @@
+void postorderTraversal(TreeNode *root,vector<int>&vec){
+  
+         if(root==nullptr){
+            return;
+        }
+        postorderTraversal(root->left,vec);
+        postorderTraversal(root->right,vec);//left right root
+     
+        vec.push_back(root-> data);
+     }
+
+vector<int> getPostOrderTraversal(TreeNode *root)
+{
+    // Write your code here.
+    vector<int>vec;
+   
+    postorderTraversal(root,vec);
+    return vec;
+}
