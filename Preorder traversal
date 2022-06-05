@@ -1,0 +1,33 @@
+class Solution {
+public:
+    vector<int> vec;
+    vector<int> preorderTraversal(TreeNode* root) {
+        if(root==nullptr){
+            return vec;
+        };
+        vec.push_back(root-> val);
+        preorderTraversal(root->left);
+        preorderTraversal(root->right);
+        return vec;
+      }
+};
+/*
+void preorderTraversal(TreeNode* root,vector<int>&vec) {//helper
+        if(root==nullptr){
+            return;
+        }
+        vec.push_back(root-> data);
+        preorderTraversal(root->left,vec);
+        preorderTraversal(root->right,vec);
+}
+vector<int> getPreOrderTraversal(TreeNode *root)
+{
+    // Write your code here.
+    vector<int> vec;
+    if(root==NULL){
+        return vec;
+    }
+    preorderTraversal(root,vec);
+    return vec;
+}
+*/
