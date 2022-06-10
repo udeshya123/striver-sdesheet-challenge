@@ -1,0 +1,19 @@
+void helper(vector<vector<int>> &image,int i,int j,int n,int m,int &oldColor,int &newColor)
+{
+    if(i<0 || j<0 || i==n || j==m || image[i][j] != oldColor) return;
+    image[i][j] = newColor;
+    helper(image,i+1,j,n,m,oldColor,newColor);
+    helper(image,i-1,j,n,m,oldColor,newColor);
+    helper(image,i,j+1,n,m,oldColor,newColor);
+    helper(image,i,j-1,n,m,oldColor,newColor);
+}
+vector<vector<int>> floodFill(vector<vector<int>> &image, int x, int y, int newColor)
+{
+    int oldColor = image[x][y];
+    if(oldColor == newColor) return image;
+    int n = image.size();
+    int m = image[0].size();
+    
+    helper(image,x,y,n,m,oldColor,newColor);
+    return image;
+}
