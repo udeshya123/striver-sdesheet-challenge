@@ -2,6 +2,6 @@
 int findDuplicate(vector<int>&arr,int n){
 aort(arr.begin(),arr.end());
 for(int i=0;i<n;i++){
-if(arr[i]==arr[i+1]) return arr[i];
+if(arr[i]==arr[i+1]) return arr[i];//sorring amd checking if same elements occurs again
 }
 }
