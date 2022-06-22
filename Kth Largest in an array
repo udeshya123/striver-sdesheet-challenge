@@ -1,0 +1,20 @@
+//APPROACH-1//O(n)
+//sc-o(k)
+
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        priority_queue<int,vector<int>,greater<int>>pq;
+        for(auto x:nums){
+            pq.push(x);
+            if(pq.size()>k){
+                pq.pop();
+            }
+        }
+        return pq.top();
+    }
+};
+
+
+APPROACH-2
+SORT AND RETURN (N-K)TH ELEMENT//O(NlogN)
