@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        if(nums.size()==0) return -1;
+        int currmax=nums[0],currmin=nums[0],finalmax=nums[0];
+        for(int i=1;i<nums.size();i++){
+           int temp=currmax;
+           currmax=max(currmax*nums[i],max(currmin*nums[i],nums[i]));
+           currmin=min(temp*nums[i],min(currmin*nums[i],nums[i]));
+           if(currmax>finalmax) finalmax=currmax;
+        }
+        return finalmax;
+    }
+};
