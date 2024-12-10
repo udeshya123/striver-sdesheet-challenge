@@ -1,3 +1,6 @@
+/* Bipartite graph is one where you can colour adjacent nodes with different colours.
+so linear graph is always bipartite + cycle with even nodes is bipartite*/
+
 #include<bits/stdc++.h>
 bool check_bipartite(int src, vector<int> adj[], vector<int> & color){
     color[src] = 1;
