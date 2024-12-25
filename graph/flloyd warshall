@@ -1,0 +1,47 @@
+https://leetcode.com/problems/count-the-number-of-houses-at-a-certain-distance-i/description/
+
+step1:create grid or adj matrix 
+step 2: update grid as per question/given connections;
+step3 :we know warshall gives shortest path from one to all other.
+apply algo
+step 4:check and count on grid
+TC:O[N^3)
+
+class Solution {
+public:
+    vector<int> countOfPairs(int n, int x, int y) {
+        vector<vector<int>>grid(n + 1, vector<int>(n + 1, 1000000));
+        for (int i = 1; i < n; i++) {
+            grid[i][i + 1] = 1;
+            grid[i + 1][i] = 1;
+        }
+        grid[x][y] = 1;
+        grid[y][x] = 1;
+
+        // floyd warshall
+        for (int via = 1; via <= n; via++) {
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= n; j++) {
+                    if (i == j)
+                        grid[i][j] = 0;
+                    else {
+                        grid[i][j] =
+                            min(grid[i][j], grid[i][via] + grid[via][j]);
+                    }
+                }
+            }
+        }
+            vector<int>result(n);
+            for(int i=1;i<=n;i++){
+                for(int j=1;j<=n;j++){
+                    if(i==j)continue;
+                    else{
+                        int val=grid[i][j];
+                        result[val-1]++;
+                    }
+                }
+            }
+            return result;
+        }
+        
+};
